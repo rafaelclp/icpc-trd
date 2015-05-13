@@ -12,7 +12,7 @@ template<int N> void sieve() {
 				is_prime[j] = false;
 }
 
-// Miller–Rabin Primality Test: tests whether a number is prime or not.
+// Miller-Rabin Primality Test: tests whether a number is prime or not.
 // Running time: O(k log n) for primes, huge constant
 
 ulint llrand() { ulint a = rand(); a<<= 32; a+= rand(); return a; }
