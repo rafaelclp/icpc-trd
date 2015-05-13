@@ -12,7 +12,7 @@
 //         above, nan if infeasible)
 //
 // To use this code, create an LPSolver object with A, b, and c as
-// arguments.  Then, call Solve(x).
+// arguments. Then, call Solve(x).
 
 typedef long double DOUBLE;
 typedef vector<DOUBLE> VD;
