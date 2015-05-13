@@ -1,9 +1,8 @@
-/*
- * Deve receber o tipo T de cada elemento da segtree, o tipo R de cada
- * elemento de entrada e o tamanho máximo da segtree no template. Implemente o
- * update e as linhas com //##//. NÃO ESQUEÇA DE LIMPAR ANTES DE USAR!!
-*/
-#define nil 0 //<valor que não interfira>
+// Must receive type T of each element in the tree, type R of each element
+// in the input and max size of the segtree on the template. Implement the
+// update and the lines with //##//. DO NOT FORGET TO CLEAR BEFORE USING!!
+
+#define nil 0 // value that doesn't interfere
 #define st_left(idx) (2*(idx)+1)
 #define st_right(idx) (2*(idx)+2)
 #define st_middle(left,right) (((left)+(right))/2)

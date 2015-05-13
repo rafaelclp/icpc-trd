@@ -7,7 +7,8 @@ long long fib2[LOGMAXN+1][2]={{0,1}}; // fib2[i]={Fib(n-1),Fib(n)}, n=2^i
 template<int MOD> void generate_fib2() {
 	for (int i = 1; i <= LOGMAXN; i++) {
 		fib2[i][1] = (fib2[i-1][1]*(((fib2[i-1][0]<<1)+fib2[i-1][1])))%MOD;
-		fib2[i][0] = (fib2[i][1]-(fib2[i-1][0]*(((fib2[i-1][1]<<1)-fib2[i-1][0]+MOD)%MOD))%MOD+MOD)%MOD;
+		fib2[i][0] = (fib2[i][1]-(fib2[i-1][0]*(((fib2[i-1][1]<<1)-
+			fib2[i-1][0]+MOD)%MOD))%MOD+MOD)%MOD;
 	}
 }
 template<int MOD> inline long long fib(long long n) { // {0,1,1,2,...}
@@ -26,14 +27,14 @@ template<int MOD> inline long long fib(long long n) { // {0,1,1,2,...}
 int main() {generate_fib2<1000000007>(); printf("%lld",fib<1000000007>(100));}
 
 // Some identities:
-//   F(n+1)F(n-1) - F(n)² = -1^n
+//   F(n+1)F(n-1) - F(n)^2 = -1^n
 //   F(n+k) = F(k)F(n+1) + F(k-1)F(n)
-//   F(2n-1) = F(n)² + F(n-1)²
+//   F(2n-1) = F(n)^2 + F(n-1)^2
 //   SUM(i=0 to n)[F(i)] = F(n+2) - 1
-//   SUM(i=0 to n)[F(i)²] = F(n)F(n+1)
-//   SUM(i=0 to n)[F(i)³] = [F(n)F(n+1)² - (-1^n)F(n-1) + 1] / 2
+//   SUM(i=0 to n)[F(i)^2] = F(n)F(n+1)
+//   SUM(i=0 to n)[F(i)^3] = [F(n)F(n+1)^2 - (-1^n)F(n-1) + 1] / 2
 //   gcd(Fm, Fn) = F(gcd(m,n))
-//   sqrt(5N² +- 4) is natural <-> exists natural k | F(k) = N
+//   sqrt(5N^2 +- 4) is natural <-> exists natural k | F(k) = N
 //   [ F(0) F(1) ] [ [0 1] [1 1] ]^n = [ F(n) F(n+1) ]
 // Binet's formula:
 //   g = (1 + sqrt(5)) / 2

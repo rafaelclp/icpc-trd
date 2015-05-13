@@ -61,7 +61,9 @@ struct  bigint {
 		}
 		return s.str();
 	}
-	friend ostream& operator <<(ostream& o, const bigint& x) { return o << (string) x; }
+	friend ostream& operator <<(ostream& o, const bigint& x) {
+		return o << (string) x;
+	}
 
 	bigint& operator +=(const bigint& x) {
 		for (int i = 1; i <= x.n; i++)

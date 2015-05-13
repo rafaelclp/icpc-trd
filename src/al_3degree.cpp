@@ -10,6 +10,8 @@ void calc_dga() {
 	alfa = (-27.0*a*a*d+9.0*a*b*c-2.0*b*b*b), beta = (3.0*a*c-b*b);
 	delta = pow(sqrt(alfa*alfa+4.0*beta*beta*beta) + alfa, 1.0/3);
 	root1 = delta/(3.0*cbrt2*a) - cbrt2*beta/(3.0*a*delta) - b/(3.0*a);
-	root2 = -1.0/(6.0*cbrt2*a)*(1.0-isqrt3)*delta+(1.0+isqrt3)*beta/(3.0*cbrt2*cbrt2*a*delta)-b/(3.0*a);
-	root3 = -1.0/(6.0*cbrt2*a)*(1.0+isqrt3)*delta+(1.0-isqrt3)*beta/(3.0*cbrt2*cbrt2*a*delta)-b/(3.0*a);
+	root2 = -1.0/(6.0*cbrt2*a)*(1.0-isqrt3)*delta+(1.0+isqrt3)*beta/
+		(3.0*cbrt2*cbrt2*a*delta)-b/(3.0*a);
+	root3 = -1.0/(6.0*cbrt2*a)*(1.0+isqrt3)*delta+(1.0-isqrt3)*beta/
+		(3.0*cbrt2*cbrt2*a*delta)-b/(3.0*a);
 }

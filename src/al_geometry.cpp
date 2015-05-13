@@ -223,7 +223,7 @@ int main() {
 		 << SegmentsIntersect(PT(0,0), PT(2,4), PT(5,5), PT(1,7)) << endl;
   
 	// expected: (1,2)
-	cerr << ComputeLineIntersection(PT(0,0), PT(2,4), PT(3,1), PT(-1,3)) << endl;
+	cerr << ComputeLineIntersection(PT(0,0),PT(2,4),PT(3,1),PT(-1,3)) << endl;
   
 	// expected: (1,1)
 	cerr << ComputeCircleCenter(PT(-3,4), PT(6,1), PT(4,5)) << endl;

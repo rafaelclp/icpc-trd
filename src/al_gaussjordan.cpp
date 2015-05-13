@@ -32,7 +32,7 @@ T GaussJordan(VVT &a, VVT &b) {
 		for (int j = 0; j < n; j++) if (!ipiv[j])
 			for (int k = 0; k < n; k++) if (!ipiv[k])
 	if (pj == -1 || fabs(a[j][k]) > fabs(a[pj][pk])) { pj = j; pk = k; }
-		if (fabs(a[pj][pk]) < EPS) { cerr << "Matrix is singular." << endl; exit(0); }
+		if (fabs(a[pj][pk]) < EPS) {cerr<<"Matrix is singular."<<endl;exit(0);}
 		ipiv[pk]++;
 		swap(a[pj], a[pk]);
 		swap(b[pj], b[pk]);

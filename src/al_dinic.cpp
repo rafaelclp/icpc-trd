@@ -1,5 +1,5 @@
 // Calculates the max flow of a graph.
-// Running time: O(V²E)
+// Running time: O(E V^2)
 
 const int MAXN = 5005, MAXE = 30005;
 typedef long long lint;

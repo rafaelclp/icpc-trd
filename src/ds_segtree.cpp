@@ -9,7 +9,7 @@ class segtree {
 			from_array(v, st_right(idx), st_middle(left,right)+1, right);
 			tree[idx] = tree[st_left(idx)] + tree[st_right(idx)];
 		} else
-			tree[idx] = v[left]; // para clear(), mudar v[left] para 0
+			tree[idx] = v[left]; // to clear(), change v[left] to 0
 	}
 	T read (int i, int j, int idx, int left, int right) {
 		if (i <= left && right <= j) return tree[idx];
@@ -32,4 +32,4 @@ public:
 	inline T read(int i, int j) { return read(i, j, 0, 0, size-1); }
 	inline void set(int x, T v) { set(x, v, 0, 0, size-1); }
 }; // int main () { segtree<int, MAXN> tree; tree.size = N; }
-// nota: é necessário limpar a segtree antes de usar!!
+// note: it is required to clear the segtree before using!!
