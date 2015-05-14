@@ -14,6 +14,10 @@ struct PT {
 	PT operator / (double c) const { return PT(x/c, y/c); }
 };
 
+ostream& operator<<(ostream& os, const PT& p) {
+    return os << "(" << p.x << "," << p.y << ")";
+}
+
 double dot(PT p, PT q)   { return p.x*q.x+p.y*q.y; }
 double dist2(PT p, PT q) { return dot(p-q,p-q); }
 double cross(PT p, PT q) { return p.x*q.y-p.y*q.x; }
@@ -47,11 +51,11 @@ double DistancePointSegment(PT a, PT b, PT c) {
 
 // compute distance between point (x,y,z) and plane ax+by+cz=d
 double DistancePointPlane(double x, double y, double z,
-                          double a, double b, double c, double d) {
+                    double a, double b, double c, double d) {
 	return fabs(a*x+b*y+c*z-d)/sqrt(a*a+b*b+c*c);
 }
 
-// determine if lines from a to b and c to d are parallel or collinear
+// determine if lines from a to b and c to d are parallel/collinear
 bool LinesParallel(PT a, PT b, PT c, PT d) { 
 	return fabs(cross(b-a, c-d)) < EPS; 
 }
@@ -88,9 +92,15 @@ PT ComputeLineIntersection(PT a, PT b, PT c, PT d) {
 
 // compute center of circle given three points
 PT ComputeCircleCenter(PT a, PT b, PT c) {
-	b=(a+b)/2;
-	c=(a+c)/2;
+	b=(a+b)/2, c=(a+c)/2;
 	return ComputeLineIntersection(b, b+RotateCW90(a-b), c, c+RotateCW90(a-c));
+}
+
+// compute center of circle given two points and radius
+PT ComputeCircleCenter(PT a, PT b, double r) {
+	double det = r * r / dist2(a, b) - 0.25;
+	if (det < 0) return PT(INF,INF); // does not exist
+	return (a + b) * 0.5 + PT(a.y - b.y, b.x - a.x) * sqrt(det);
 }
 
 // determine if point is in a possibly non-convex polygon (by William
