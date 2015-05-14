@@ -52,8 +52,8 @@ int mod_inverse(int a, int n) {
 }
 
 // Chinese remainder theorem (special case): find z such that
-// z % x = a, z % y = b.  Here, z is unique modulo M = lcm(x,y).
-// Return (z,M).  On failure, M = -1.
+// z % x = a, z % y = b. Here, z is unique modulo M = lcm(x,y).
+// Return (z,M). On failure, M = -1.
 PII chinese_remainder_theorem(int x, int a, int y, int b) {
 	int s, t;
 	int d = extended_euclid(x, y, s, t);
@@ -61,11 +61,9 @@ PII chinese_remainder_theorem(int x, int a, int y, int b) {
 	return make_pair(mod(s*b*x+t*a*y,x*y)/d, x*y/d);
 }
 
-// Chinese remainder theorem: find z such that
-// z % x[i] = a[i] for all i.  Note that the solution is
-// unique modulo M = lcm_i (x[i]).  Return (z,M).  On 
-// failure, M = -1.  Note that we do not require the a[i]'s
-// to be relatively prime.
+// Chinese remainder theorem: find z such that z = a[i] (mod x[i]) for all i.
+// Note that the solution is unique modulo M = lcm_i (x[i]). Return (z,M). On
+// failure, M = -1. Note we do not require the a[i]'s to be relatively prime.
 PII chinese_remainder_theorem(const VI &x, const VI &a) {
 	PII ret = make_pair(a[0], x[0]);
 	for (int i = 1; i < x.size(); i++) {
@@ -104,31 +102,25 @@ int phi(int n) {
 }
 
 int main() {
-	// expected: 2
-	cout << gcd(14, 30) << endl;
-	
+	// expected: 2 8
+	cout << gcd(14, 30) << " " << mod_inverse(8, 9) << endl;
+
 	// expected: 2 -2 1
-	int x, y;
-	int d = extended_euclid(14, 30, x, y);
+	int x, y, d = extended_euclid(14, 30, x, y);
 	cout << d << " " << x << " " << y << endl;
-	
-	// expected: 95 45
-	VI sols = modular_linear_equation_solver(14, 30, 100);
-	for (int i = 0; i < (int) sols.size(); i++) cout << sols[i] << " "; 
-	cout << endl;
-	
-	// expected: 8
-	cout << mod_inverse(8, 9) << endl;
-	
-	// expected: 23 56
+
+	// expected: 23 105
 	//           11 12
-	int xs[] = {3, 5, 7, 4, 6};
-	int as[] = {2, 3, 2, 3, 5};
+	int xs[] = {3, 5, 7, 4, 6}, as[] = {2, 3, 2, 3, 5};
 	PII ret = chinese_remainder_theorem(VI (xs, xs+3), VI(as, as+3));
 	cout << ret.first << " " << ret.second << endl;
 	ret = chinese_remainder_theorem (VI(xs+3, xs+5), VI(as+3, as+5));
 	cout << ret.first << " " << ret.second << endl;
-	
+
+	// expected: 95 45
+	VI sols = modular_linear_equation_solver(14, 30, 100);
+	for (int i = 0; i < sols.size(); i++) cout << sols[i] << " " << endl;
+
 	// expected: 5 -15
 	linear_diophantine(7, 2, 5, x, y);
 	cout << x << " " << y << endl;
