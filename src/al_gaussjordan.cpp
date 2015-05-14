@@ -22,8 +22,7 @@ typedef vector<T> VT;
 typedef vector<VT> VVT;
 
 T GaussJordan(VVT &a, VVT &b) {
-	const int n = a.size();
-	const int m = b[0].size();
+	const int n = a.size(), m = b[0].size();
 	VI irow(n), icol(n), ipiv(n);
 	T det = 1;
 
@@ -32,7 +31,7 @@ T GaussJordan(VVT &a, VVT &b) {
 		for (int j = 0; j < n; j++) if (!ipiv[j])
 			for (int k = 0; k < n; k++) if (!ipiv[k])
 	if (pj == -1 || fabs(a[j][k]) > fabs(a[pj][pk])) { pj = j; pk = k; }
-		if (fabs(a[pj][pk]) < EPS) {cerr<<"Matrix is singular."<<endl;exit(0);}
+		if (fabs(a[pj][pk]) < EPS){cerr<<"Matrix is singular."<<endl;exit(0);}
 		ipiv[pk]++;
 		swap(a[pj], a[pk]);
 		swap(b[pj], b[pk]);
@@ -58,19 +57,15 @@ T GaussJordan(VVT &a, VVT &b) {
 }
 
 int main() {
-	const int n = 4;
-	const int m = 2;
+	const int n = 4, m = 2;
 	double A[n][n] = { {1,2,3,4},{1,0,1,0},{5,3,2,4},{6,1,4,6} };
 	double B[n][m] = { {1,2},{4,3},{5,6},{8,7} };
 	VVT a(n), b(n);
-	for (int i = 0; i < n; i++) {
-		a[i] = VT(A[i], A[i] + n);
-		b[i] = VT(B[i], B[i] + m);
-	}
+	for (int i = 0; i < n; i++)
+		a[i] = VT(A[i], A[i] + n), b[i] = VT(B[i], B[i] + m);
 
-	// expected: 60	
 	double det = GaussJordan(a, b);
-	cout << "Determinant: " << det << endl;
+	cout << "Determinant: " << det << endl; // expected: 60
 
 	// expected: -0.233333 0.166667 0.133333 0.0666667
 	//           0.166667 0.166667 0.333333 -0.333333

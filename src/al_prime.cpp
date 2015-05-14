@@ -59,22 +59,10 @@ int is_probably_prime(ulint n, int k=64) {
 //    829   839   853   857   859   863   877   881   883   887   907   911
 //    919   929   937   941   947   953   967   971   977   983   991   997
 
-// Other primes:
-//    The largest prime smaller than 10 is 7.
-//    The largest prime smaller than 100 is 97.
-//    The largest prime smaller than 1000 is 997.
-//    The largest prime smaller than 10000 is 9973.
-//    The largest prime smaller than 100000 is 99991.
-//    The largest prime smaller than 1000000 is 999983.
-//    The largest prime smaller than 10000000 is 9999991.
-//    The largest prime smaller than 100000000 is 99999989.
-//    The largest prime smaller than 1000000000 is 999999937.
-//    The largest prime smaller than 10000000000 is 9999999967.
-//    The largest prime smaller than 100000000000 is 99999999977.
-//    The largest prime smaller than 1000000000000 is 999999999989.
-//    The largest prime smaller than 10000000000000 is 9999999999971.
-//    The largest prime smaller than 100000000000000 is 99999999999973.
-//    The largest prime smaller than 1000000000000000 is 999999999999989.
-//    The largest prime smaller than 10000000000000000 is 9999999999999937.
-//    The largest prime smaller than 100000000000000000 is 99999999999999997.
-//    The largest prime smaller than 1000000000000000000 is 999999999999999989.
+// Other primes (primes immediatly less than 10^x):
+//  x      p   x           p   x                p   x                     p
+//  1      7   6      999983  11      99999999977  16      9999999999999937
+//  2     97   7     9999991  12     999999999989  17     99999999999999997
+//  3    997   8    99999989  13    9999999999971  18    999999999999999989
+//  4   9973   9   999999937  14   99999999999973  19   9999999999999999961
+//  5  99991  10  9999999967  15  999999999999989  20  99999999999999999989

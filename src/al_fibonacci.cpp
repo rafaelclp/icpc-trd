@@ -39,7 +39,7 @@ int main() {generate_fib2<1000000007>(); printf("%lld",fib<1000000007>(100));}
 // Binet's formula:
 //   g = (1 + sqrt(5)) / 2
 //   Fn = g^n / sqrt(5)
-//   n(F) = floor(log[g](sqrt(5)F + 1/2)), log[g] = log base g
+//   n(F) = floor(log[g](sqrt(5)F + 1/2)), where log[g] = log base g
 
 // First 40 fibonacci numbers
 //    n F(n) |  n  F(n) |  n    F(n) |  n      F(n) |  n       F(n)

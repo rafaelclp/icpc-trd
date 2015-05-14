@@ -7,14 +7,12 @@ int cross(Point O, Point a, Point b) {
 	return cross(Point(a.first-O.first,a.second-O.second),
 		Point(b.first-O.first,b.second-O.second));
 }
-template<int M>
-void findPoints(vector<Point>& points, vector<Point>& result) {
+template<int M> void findPoints(vector<Point>& points, vector<Point>& res) {
 	for (int i = 0; i < points.size(); i++) {
 		Point& p = points[i];
-		while (result.size() >= 2 &&
-			M * cross(result.end()[-2], result.end()[-1], p) >= 0)
-			result.pop_back(); // > 0 keeps collinear points
-		result.push_back(p);
+		while (res.size()>=2 && M*cross(res.end()[-2],res.end()[-1],p)>=0)
+			res.pop_back(); // > 0 instead of >= 0 keeps collinear points
+		res.push_back(p);
 	}
 }
 // USAGE: convexHull(inputPoints, outputPolygon)

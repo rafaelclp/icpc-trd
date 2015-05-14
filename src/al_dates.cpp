@@ -1,23 +1,19 @@
 // Routines for performing computations on dates.  In these routines,
 // months are expressed as integers from 1 to 12, days are expressed
-// as integers from 1 to 31, and years are expressed as 4-digit
-// integers.
+// as integers from 1 to 31, and years are expressed as 4-digit ints.
 
 string dayOfWeek[] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
 // converts Gregorian date to integer (Julian day number)
 int dateToInt (int m, int d, int y){  
-	return 
-		1461 * (y + 4800 + (m - 14) / 12) / 4 +
+	return 1461 * (y + 4800 + (m - 14) / 12) / 4 +
 		367 * (m - 2 - (m - 14) / 12 * 12) / 12 - 
-		3 * ((y + 4900 + (m - 14) / 12) / 100) / 4 + 
-		d - 32075;
+		3 * ((y + 4900 + (m - 14) / 12) / 100) / 4 + d - 32075;
 }
 
 // converts integer (Julian day number) to Gregorian date: month/day/year
 void intToDate (int jd, int &m, int &d, int &y){
 	int x, n, i, j;
-
 	x = jd + 68569;
 	n = 4 * x / 146097;
 	x -= (146097 * n + 3) / 4;

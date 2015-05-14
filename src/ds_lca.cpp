@@ -1,6 +1,5 @@
 // Calculates lca(a,b) in a tree in O(log n).
-// Running time: O(log n)
-// Pre-computing: O(n log n)
+// Running time: O(log n) + pre-computing O(n log n)
 
 const int MAXN=1000005, LOGMAXN=2+log2(MAXN);
 vector<int> G[MAXN];
