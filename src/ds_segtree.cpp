@@ -1,35 +1,23 @@
-#define st_left(idx) (2*(idx)+1)
-#define st_right(idx) (2*(idx)+2)
-#define st_middle(left,right) (((left)+(right))/2)
-template<class T, int MAXSIZE>
-class segtree {
-	void from_array (T* v, int idx, int left, int right) {
-		if (left != right) {
-			from_array(v, st_left(idx), left, st_middle(left,right));
-			from_array(v, st_right(idx), st_middle(left,right)+1, right);
-			tree[idx] = tree[st_left(idx)] + tree[st_right(idx)];
-		} else
-			tree[idx] = v[left]; // to clear(), change v[left] to 0
+int segPool[2*MAXN]; int segPoolIdx; // way faster than new/delete/malloc/free
+inline int* newSegTMem(int n) { return &segPool[(segPoolIdx+=(n<<1))-(n<<1)]; }
+#define clearSegTMem() (segPoolIdx=0) // clear after every testcase
+template<class T> struct segtree {
+	int n; T *t; // t[1] is root, t[0] is not used
+	inline T op(T &lval, T &rval) { return max(lval, rval); } // CHANGE THIS!!
+	inline void alloc(int size) { t = newSegTMem(n = size); }
+	inline void build(vector<T> &v) { // you may want to remove call to alloc!
+		alloc(v.size()); for (int i = 0; i < n; i++) t[i+n] = v[i];
+		for (int i = n - 1; i > 0; i--) t[i] = op(t[i<<1], t[i<<1|1]);
 	}
-	T read (int i, int j, int idx, int left, int right) {
-		if (i <= left && right <= j) return tree[idx];
-		if (j < left || right < i) return 0;
-		return read(i, j, st_left(idx), left, st_middle(left,right)) +
-			read(i, j, st_right(idx), st_middle(left,right)+1, right);
+	inline void modify(int p, const T &val) {
+		for (t[p += n] = val; p >>= 1; ) t[p] = op(t[p<<1], t[p<<1|1]);
 	}
-	void set (int x, T& v, int idx, int left, int right) {
-		if (x < left || right < x) return;
-		if (left != right) {
-			set(x, v, st_left(idx), left, st_middle(left,right));
-			set(x, v, st_right(idx), st_middle(left,right)+1, right);
-			tree[idx] = tree[st_left(idx)] + tree[st_right(idx)];
-		} else
-			tree[idx] = v;
+	inline T query(int l, int r) { // [l, r); for single element, get t[n+idx]
+		T res = 0; // nil
+		for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+			if (l&1) res = op(res, t[l++]); // if order really matters, create
+			if (r&1) res = op(t[--r], res); // resl and resr and merge in retn
+		}
+		return res; // op(resl, resr)
 	}
-public:
-	T* tree; int size; segtree() { tree = new T[4*MAXSIZE]; }
-	inline void from_array(T array[]) { from_array(array, 0, 0, size-1); }
-	inline T read(int i, int j) { return read(i, j, 0, 0, size-1); }
-	inline void set(int x, T v) { set(x, v, 0, 0, size-1); }
-}; // int main () { segtree<int, MAXN> tree; tree.size = N; }
-// note: it is required to clear the segtree before using!!
+}; // (1) segtree<int> seg; (2) seg.build(v); OR seg.alloc(n); (doesn't clear)
