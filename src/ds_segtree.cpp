@@ -1,6 +1,6 @@
 int segPool[2*MAXN]; int segPoolIdx; // way faster than new/delete/malloc/free
 inline int* newSegTMem(int n) { return &segPool[(segPoolIdx+=(n<<1))-(n<<1)]; }
-#define clearSegTMem() (segPoolIdx=0) // clear after every testcase
+#define freeSegTMem() (segPoolIdx=0) // USE AFTER EVERY TEST CASE!!
 template<class T> struct segtree {
 	int n; T *t; // t[1] is root, t[0] is not used
 	inline T op(T &lval, T &rval) { return max(lval, rval); } // CHANGE THIS!!
