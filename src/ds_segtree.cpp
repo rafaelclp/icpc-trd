@@ -1,10 +1,8 @@
-int segPool[2*MAXN]; int segPoolIdx; // way faster than new/delete/malloc/free
-inline int* newSegTMem(int n) { return &segPool[(segPoolIdx+=(n<<1))-(n<<1)]; }
-#define freeSegTMem() (segPoolIdx=0) // USE AFTER EVERY TEST CASE!!
 template<class T> struct segtree {
+	static T pool[]; static int poolIdx; static void free() { poolIdx = 0; }
+	inline void alloc(int size) { t = pool+poolIdx; poolIdx += (n=size)<<1; }
 	int n; T *t; // t[1] is root, t[0] is not used
 	inline T op(T &lval, T &rval) { return max(lval, rval); } // CHANGE THIS!!
-	inline void alloc(int size) { t = newSegTMem(n = size); }
 	inline void build(vector<T> &v) { // you may want to remove call to alloc!
 		alloc(v.size()); for (int i = 0; i < n; i++) t[i+n] = v[i];
 		for (int i = n - 1; i > 0; i--) t[i] = op(t[i<<1], t[i<<1|1]);
@@ -21,3 +19,5 @@ template<class T> struct segtree {
 		return res; // op(resl, resr)
 	}
 }; // (1) segtree<int> seg; (2) seg.build(v); OR seg.alloc(n); (doesn't clear)
+template<class T> T segtree<T>::pool[2*MAXN]; // (3) after EVERY testcase, use
+template<class T> int segtree<T>::poolIdx;    // segtree<int>::free();
