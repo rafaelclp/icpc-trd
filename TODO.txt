@@ -13,8 +13,9 @@ NOTES:
     it still works, keep it in src/ but add an entry here in RETEST.
 
 NAMING CONVENTIONS:
-  = ds_<data structure>.cpp/.py
   = al_<algorithm>.cpp/.py
+  = ds_<data structure>.cpp/.py
+  = cd_<piece of code>.cpp/.py
   = rf_<reference>.cpp/.py/.tex/.txt
       i.e. if it's a reference to C++, use .cpp, even if it's not code.
   - If something fits both algorithm and data structure (like suffix array),
