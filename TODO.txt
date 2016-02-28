@@ -23,6 +23,12 @@ NAMING CONVENTIONS:
 
 ------------------------------------------
 
+TODO (iteration zero)
+  Add explanation, reduce number of lines of all src files (why not?). Done:
+    al_2sat.cpp (from 13, added explanation, to 12)
+    al_tarjan.cpp (from 39, to 25)
+    ds_segtree.cpp (to 23)
+
 TODO (iteration one)
   [Fix] segtree with lazy propagation (make it easier to use)
   [Fix] STL reference (make it easier to use)
@@ -30,6 +36,7 @@ TODO (iteration one)
   [Add] C++11 utils
   [Add] FFT
   [Add] Heavy-Light decomposition
+  [Add] Centroid decomposition
   [Add] Treap/Cartesian Tree
   [Add] BIT and variations
   [Add] Math reference (en.wikipedia.org/wiki/Lists_of_mathematics_topics)
