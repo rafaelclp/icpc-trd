@@ -1,16 +1,18 @@
 [SOME NOTES AND GENERAL EXPLANATIONS]
 
-IMPORTANT: NO MORE THAN 80 CHARACTERS PER LINE IN THIS FILE. IN SRC FILES WE
-  ARE NOT SO STRICT ABOUT THIS LIMIT, BUT APPLY IT WHEN IT'S "EASY"*!
-  * YOU DECIDE WHAT IS "EASY" =P
+IMPORTANT: NO MORE THAN 80 CHARACTERS PER LINE IN THIS FILE. AVOID OVER 80
+  CHARACTERS PER LINE IN SRC FILES.
 
-NOTE¹: after something is done, move to DONE if it still requires an update in
-  the tex file. If it's already in the tex, just remove it from this file.
-NOTE²: do not remove old code/reference files; move to _unused/.
-NOTE³: if you have a draft of some algorithm (incomplete code or needs review, 
-  testing, etc) add it to _draft/ until it's complete.
+NOTES:
+  - After something is done, move to DONE if it still requires an update in
+    the tex file. If it's already in the tex, just remove it from this file.
+  - Do not remove old code/reference files; move to _unused/. Rename if needed.
+  - If you have a draft of some algorithm (incomplete code or needs review,
+    testing, etc) add it to _draft/ until it's complete.
+  - If you made modifications to some src file and didn't test them, but think
+    it still works, keep it in src/ but add an entry here in RETEST.
 
-NAMING:
+NAMING CONVENTIONS:
   = ds_<data structure>.cpp/.py
   = al_<algorithm>.cpp/.py
   = rf_<reference>.cpp/.py/.tex/.txt
@@ -21,27 +23,31 @@ NAMING:
 
 ------------------------------------------
 
-TODO¹
-	[Fix] segtree with lazy propagation (make it easier to use)
-	[Fix] STL reference (make it easier to use)
-	[Add] C++ utils
-	[Add] C++11 utils
-	[Add] FFT
-	[Add] Heavy-Light decomposition
-	[Add] Treap/Cartesian Tree
-	[Add] BIT and variations
-	[Add] Math reference (en.wikipedia.org/wiki/Lists_of_mathematics_topics)
-		[Add] Math/Arithmetics reference
-			[Add] Prime reference (en.wikipedia.org/wiki/List_of_prime_numbers)
+TODO (iteration one)
+  [Fix] segtree with lazy propagation (make it easier to use)
+  [Fix] STL reference (make it easier to use)
+  [Add] C++ utils
+  [Add] C++11 utils
+  [Add] FFT
+  [Add] Heavy-Light decomposition
+  [Add] Treap/Cartesian Tree
+  [Add] BIT and variations
+  [Add] Math reference (en.wikipedia.org/wiki/Lists_of_mathematics_topics)
+    [Add] Math/Arithmetics reference
+      [Add] Prime reference (en.wikipedia.org/wiki/List_of_prime_numbers)
     [Add] Math/Combinatorics reference
     [Add] Math/Probability reference
-		[Add] Math/Algebra reference
-		[Add] Math/Geometry reference
-		[Add] Math/Calculus reference
+    [Add] Math/Algebra reference
+    [Add] Math/Geometry reference
+    [Add] Math/Calculus reference
     [Add] Numeric Methods (mainly Newton and Secant)
   [Add] Aho-Corasick
 
-TODO²
+TODO (iteration two)
   [Fix] document/tex to fit 25 pages
 
 DONE
+
+RETEST
+  al_tarjan.cpp
+  al_2sat.cpp
